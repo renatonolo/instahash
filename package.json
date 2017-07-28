@@ -7,8 +7,8 @@
     "test": "mocha tests/instagram.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/renatonolo/instahash.git"
+    "type": "https",
+    "url": "https://git@github.com/renatonolo/instahash.git"
   },
   "author": "Renato N. Lourenço",
   "license": "ISC",
@@ -18,10 +18,19 @@
   "homepage": "https://github.com/renatonolo/instahash#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "mongoose": "^4.11.4"
+    "express-ejs-layouts": "^2.3.0",
+    "mongoose": "^4.11.4",
+    "morgan": "^1.8.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {
-    "morgan": "^1.8.2"
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "mocha": "^3.4.2"
   }
 }

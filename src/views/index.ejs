@@ -1,0 +1,38 @@
+<html ng-app="InstaHashApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>InstaHash</title>
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap-social-gh-pages/bootstrap-social.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/scripts/app.module.js"></script>
+    <script src="/scripts/modules/users.module.js"></script>
+</head>
+
+<body class="container">
+    <input type="hidden" id="hdd_username" value="<%= username %>"/>
+    <div class="row">
+        <div class="col-md-4 col-centered">
+            <%= msgError %>
+        </div>
+    </div>
+    <ng-view>Loading...</ng-view>
+</body>
+
+</html>

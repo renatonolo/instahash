@@ -1,0 +1,19 @@
+{
+  "name": "instahash",
+  "description": "Projeto de pesquisa de hashtags do instagram.",
+  "version": "1.0.0",
+  "homepage": "https://git@github.com/renatonolo/instahash.git",
+  "license": "ISC",
+  "private": false,
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-animate": "1.6.x",
+    "angular-bootstrap": "2.5.x",
+    "angular-mocks": "1.6.x",
+    "angular-resource": "1.6.x",
+    "angular-route": "1.6.x",
+    "bootstrap": "3.3.x",
+    "jquery": "2.2.x",
+    "components-font-awesome": "^4.7.0"
+  }
+}
