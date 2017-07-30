@@ -96,6 +96,44 @@ function HomeController($scope, $window, UsersFactory){
     }
 }
 
+//Definição do Historico controller
 function HistoricoController($scope, $window, UsersFactory){
+    $scope.activeTab = "/historico";
+    $scope.historico = [];
+    $scope.loading = false;
+    $scope.itemSelecionado = null;
 
+    //Carrega a tela
+    loadHistorico();
+
+    //Busca o historico para ser mostrado na tela
+    function loadHistorico(){
+        $scope.loading = true;
+        let username = localStorage.getItem("username");
+
+        UsersFactory.getHistorico(username).then(function(tags){
+            console.log(tags);
+            $scope.historico = tags.data;
+            $scope.loading = false;
+        });
+    }
+
+    //Seleciona o item que o usuário clicou
+    $scope.selecionarItem = function(item){
+        $scope.itemSelecionado = item;
+        renderGallery();
+    }
+
+    //Renderiza a galeria...
+    function renderGallery(){
+        $scope.loading = false;
+        document.getElementById('links').onclick = function(event){
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+            link = target.src ? target.parentNode : target,
+            options = {index: link, event: event},
+            links = document.getElementsByTagName('a');
+            blueimp.Gallery(links, options);
+        }
+    }
 }

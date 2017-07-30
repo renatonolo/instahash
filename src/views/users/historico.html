@@ -2,3 +2,66 @@
     <li ng-class="{active: activeTab == '/home'}"><a href="/#!/home">Home</a></li>
     <li ng-class="{active: activeTab == '/historico'}"><a href="/#!/historico">Histórico</a></li>
 </ul>
+
+<div ng-show="loading" class="row" style="margin-top: 10px;">
+    <div class="col-md-4 col-centered">
+        <img src="/images/loader.gif" />
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;" ng-show="itemSelecionado == null">
+    <div class="col-md-8 col-centered">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Histórico de pesquisas</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="list-group">
+                    <button ng-repeat="item in historico" ng-click="selecionarItem(item)" class="list-group-item">
+                        <span class="badge">{{item.results.length}}</span>
+                        {{item.tag}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 10px;" ng-show="itemSelecionado != null">
+    <div class="page-header">
+        <h1>Hashtag: #{{itemSelecionado.tag}}</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="blueimp-gallery" class="blueimp-gallery">
+                <div class="slides"></div>
+                <h3 class="title"></h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="close">×</a>
+                <a class="play-pause"></a>
+                <ol class="indicator"></ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="margin-left: auto; margin-right: auto; width: 1050px;">
+            <button class="btn btn-default" ng-click="itemSelecionado = null">Voltar</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-12 col-centered">
+            <div id="links" style="margin-left: auto; margin-right: auto; width: 1050px;">
+                <div ng-repeat="item in itemSelecionado.results" style="float: left;">
+                    <a href="{{item.images.standard_resolution.url}}" title="{{item.user.username}}">
+                        <img src="{{item.images.thumbnail.url}}" alt="{{item.user.username}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -34,12 +34,16 @@ class TagsModel {
                     let json = {'status': 400};
                     if(!error){
                         let jsonBody = JSON.parse(body);
+
+                        if(!jsonBody.data) jsonBody.data = [];
+                        if(!jsonBody.pagination) jsonBody.pagination = {};
+
                         json = {
                             'status': 200,
                             'data': jsonBody.data,
                             'pagination': jsonBody.pagination
                         };
-                        that.salvarHistorico(tag, jsonBody.data);
+                        that.salvarHistorico(username, tag, jsonBody.data);
                     }
 
                     res.jsonp(json);
@@ -56,32 +60,35 @@ class TagsModel {
 
     //Salva o resultado de uma pesquisa de tag para poder
     //consultar o histórico depois...
-    salvarHistorico(tag, data){
+    salvarHistorico(username, tag, data){
         var that = this;
 
-        this.Tag.findOne({tag: tag}, 'results', function(err, result){
+        this.Tag.findOne({username: username, tag: tag}, '', function(err, result){
             if(!err){
                 if(!result){
                     let historico = new that.Tag({
+                        username: username,
                         tag: tag,
                         results: data
                     });
-                    historico.save(function(err, result){
-                        console.log(err);
-                        console.log(result);
-                    });
+                    historico.save();
                 } else {
                     for(let i = 0; i < data.length; i++){
                         let itemToSave = data[i];
                         if(!that.isSaved(itemToSave, result.results))
                             result.results.push(itemToSave);
                     }
-                    result.save(function(err, result1){
-                        console.log(err);
-                        console.log(result1);
-                    });
+                    result.save();
                 }
             }
+        });
+    }
+
+    //Pega o histórico de pesquisar do usuário, de acordo com o username.
+    getHistorico(username, res){
+        this.Tag.find({username: username}, function(err, result){
+            if(!err) res.jsonp(result);
+            else res.jsonp({});
         });
     }
 

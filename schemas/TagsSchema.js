@@ -5,6 +5,7 @@ class TagsSchema {
         //Define o schema tokens
         this.schema = new mongoose.Schema(
             {
+                username: {type: String, default: ''},
                 tag: {type: String, default: ''},
                 results: {type: Array, default: ''}
             }

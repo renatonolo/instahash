@@ -39,3 +39,5 @@ app.use('/tags', tags);
 //Abre o servidor
 app.listen(config.host.port);
 console.log("Listenning on port: " + config.host.port);
+
+module.exports = app;
