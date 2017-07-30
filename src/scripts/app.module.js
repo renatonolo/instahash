@@ -28,9 +28,9 @@ angular.module(
                 }
             )
             .when(
-                '/home/:username', {
+                '/home', {
                     templateUrl: "/views/users/home.html",
-                    controller: 'UsersController'
+                    controller: 'HomeController'
                 }
             )
             .otherwise(
@@ -47,6 +47,6 @@ angular.module(
         console.log("Hdd value: " + hdd.value);
 
         if(hdd.value != '')
-            $location.path("/home/" + hdd.value);
+            $location.path("/home");
     });
 })

@@ -10,19 +10,7 @@ class UsersModel {
 
     //Constructor
     constructor(){
-        //Define o schema tokens
-        this.schema = new mongoose.Schema(
-            {
-                username: {type: String, default: ''},
-                access_token: {type: String, default: ''}
-            }
-        );
-
-        //Carrega ou cria o schema tokens
-        this.Token = mongoose.model(
-            'tokens',
-            this.schema
-        );
+        this.Token = mongoose.model('tokens');
     }
 
     /*
@@ -68,6 +56,15 @@ class UsersModel {
             if(!err){
                 res.render('../src/views/index.ejs', {username: username, msgError: ''});
             }
+        });
+    }
+
+    getTokenByUsername(username){
+        return new Promise((resolve, reject) => {
+            this.Token.findOne({username: username}, function(err, result){
+                if(!err) resolve(result);
+                else reject(err);
+            });
         });
     }
 }

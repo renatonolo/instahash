@@ -8,8 +8,15 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var config = require('config');
 
+//Carrega os schemas
+var TokensSchema = require('./schemas/TokensSchema.js');
+new TokensSchema();
+var TagsSchema = require('./schemas/TagsSchema.js');
+new TagsSchema();
+
 //Carregar as rotas
-var users = require('./routes/users.js')
+var users = require('./routes/users.js');
+var tags = require('./routes/tags.js');
 
 //Conectar no mongo db
 mongoose.connect(
@@ -27,6 +34,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.use('/', users);
+app.use('/tags', tags);
 
 //Abre o servidor
 app.listen(config.host.port);
