@@ -33,6 +33,12 @@ angular.module(
                     controller: 'HomeController'
                 }
             )
+            .when(
+                '/historico', {
+                    templateUrl: "/views/users/historico.html",
+                    controller: "HistoricoController"
+                }
+            )
             .otherwise(
                 {
                     redirectTo: '/login'
@@ -46,7 +52,9 @@ angular.module(
         let hdd = document.getElementById("hdd_username");
         console.log("Hdd value: " + hdd.value);
 
-        if(hdd.value != '')
+        if(hdd.value != ''){
+            localStorage.setItem("username", hdd.value);
             $location.path("/home");
+        }
     });
 })

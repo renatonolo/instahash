@@ -8,12 +8,19 @@ angular.module('Users', [])
     '$window',
     LoginController
 ])
-//Declarando o UsersController
+//Declarando o HomeController
 .controller('HomeController', [
     '$scope',
     '$rootScope',
     'UsersFactory',
     HomeController
+])
+//Declarando o HistoricoController
+.controller('HistoricoController', [
+    '$scope',
+    '$rootScope',
+    'UsersFactory',
+    HistoricoController
 ]);
 
 //Login controller
@@ -43,7 +50,7 @@ function HomeController($scope, $window, UsersFactory){
     $scope.pesquisar = function(){
         $scope.loading = true;
         $scope.tag = document.getElementById("txt_hashtag").value;
-        let username = document.getElementById("hdd_username").value;
+        let username = localStorage.getItem("username");
 
         if(username != '' && $scope.tag != ''){
             UsersFactory.getHashtag(username, $scope.tag).then(function(res){
@@ -53,14 +60,14 @@ function HomeController($scope, $window, UsersFactory){
                 if(res.data.data.length >= 20) $showCarregarMais = true;
                 renderGallery();
             });
-        }
+        } else $scope.loading = false;
     }
 
     //Captura a tag atual, bem como o min_tag_id atual e envia para o servidor
     //para pesquisar mais imagens com aquela tag..
     $scope.carregarMais = function(){
         $scope.loading = true;
-        let username = document.getElementById("hdd_username").value;
+        let username = localStorage.getItem("username");
 
         if(username != '' && $scope.tag){
             UsersFactory.getHashtag(username, $scope.tag, $scope.min_tag_id).then(function(res){
@@ -87,4 +94,8 @@ function HomeController($scope, $window, UsersFactory){
             blueimp.Gallery(links, options);
         }
     }
+}
+
+function HistoricoController($scope, $window, UsersFactory){
+
 }
