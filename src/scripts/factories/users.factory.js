@@ -4,8 +4,9 @@
     angular.module('Users')
     .factory("UsersFactory", [
         '$http',
-        function($http){
-            let base = "http://localhost:8000";
+        'configs',
+        function($http, configs){
+            let base = configs.base_url;
 
             return {
                 //Pesquisa a hashtag direto no instagram...

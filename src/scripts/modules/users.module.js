@@ -7,6 +7,7 @@
     .controller('LoginController', [
         '$scope',
         '$window',
+        'configs',
         LoginController
     ])
     //Declarando o HomeController
@@ -25,13 +26,13 @@
     ]);
 
     //Login controller
-    function LoginController($scope, $window){
+    function LoginController($scope, $window, configs){
         //Faz o login, enviando a request para o instagram, já com a url
         //de callback..
         $scope.btnLogin = function(){
-            var url = "https://api.instagram.com/oauth/authorize/";
-            url += "?client_id=48b53e55487f4e71a3313b4b14185175";
-            url += "&redirect_uri=http://localhost:8000/callbackLogin";
+            var url = configs.instagram.authorize;
+            url += "?client_id=" + configs.instagram.client_id;
+            url += "&redirect_uri=" + configs.instagram.redirect_uri;
             url += "&response_type=code";
             url += "&scope=public_content";
 

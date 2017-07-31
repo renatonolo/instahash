@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         },
         concat: {
             dist: {
-                src: ['./src/scripts/app.module.js', './src/scripts/modules/*.js', './src/scripts/factories/*.js'],
+                src: ['./src/scripts/app.module.js', './src/scripts/app.constants.js', './src/scripts/modules/*.js', './src/scripts/factories/*.js'],
                 dest: './dist/instahash.min.js'
             }
         },
