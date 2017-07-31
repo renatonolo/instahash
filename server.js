@@ -27,6 +27,7 @@ mongoose.connect(
 
 //Configurar o express js
 app.use(express.static(__dirname + "/src"));
+app.use(express.static(__dirname + "/dist"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));

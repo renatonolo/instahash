@@ -4,7 +4,9 @@
   "description": "Projeto de pesquisa de hashtags do instagram.",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/instagram.js"
+    "test": "mocha",
+    "build": "grunt",
+    "start": "npm run build && nodejs server.js"
   },
   "repository": {
     "type": "https",
@@ -29,8 +31,11 @@
   "devDependencies": {
     "chai": "^4.1.0",
     "chai-http": "^3.0.0",
+    "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "mocha": "^3.4.2"
   }
 }
