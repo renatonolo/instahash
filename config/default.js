@@ -1,4 +1,4 @@
-{
+module.exports = {
     "uriMongoDb": "mongodb://localhost/instahash",
     "host": {
         "port": 8000
@@ -12,4 +12,4 @@
             "tags": "https://api.instagram.com/v1/tags/"
         }
     }
-}
+};
