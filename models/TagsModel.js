@@ -23,7 +23,7 @@ class TagsModel {
             let token = await this.usersModel.getTokenByUsername(username);
 
             if(token){
-                let url = "https://api.instagram.com/v1/tags/";
+                let url = config.instagram.url.tags;
                 url += tag + "/media/recent";
                 url += "?access_token=" + token.access_token;
 
