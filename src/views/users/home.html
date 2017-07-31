@@ -24,6 +24,13 @@
     </div>
 </div>
 
+<div class="row" ng-show="items.length > 0" style="margin-top: 10px;">
+    <div class="pull-right">
+        <span style="color: #A1D2FA text-size: 11pt; margin-right: 10px;">{{statusSalvarResultado}}</span>
+        <button ng-click="salvarResultado()" class="btn btn-default">Salvar resultado</button>
+    </div>
+</div>
+
 <div class="row" style="margin-top: 10px;">
     <div class="col-md-12 col-centered">
         <div id="links" style="margin-left: auto; margin-right: auto; width: 1050px;">

@@ -70,12 +70,16 @@ Após realizar o login, o usuário é enviado para a página home.
 
 Nesta página é possível realizar a pesquisa de hashtag. Para isto, basta digitar a hashtag desejada no campo '#something' (sem o caractere '#') e clicar no botão 'Pesquisar'. O resultado da pesquisa será mostrado logo abaixo do campo de busca.
 
+Ao realizar uma busca com resultado, é possível salvar o resultado dessa busca, clicando no botão 'Salvar resultado'. Ao clicar no botão, o resultado dessa pesquisa é salvo no histórico de pesquisas.
+
 ## Recuperando o histórico de pesquisar
 Na página de histórico é possível recuperar todas as pesquisar já realizadas pelo usuário. Para acessar tal página, basta clicar na aba 'Histórico' localizada no botão no canto superior esquerdo da tela.
 
 Nesta página será mostrada uma lista com todas as hashtags pesquisadas pelo usuário, bem como um número indicando quantos resultados foram retornados no momento em que o usuário fez a pesquisa. Por exemplo: caso um usuário faça uma pesquisa pela hashtag 'nature' na semana passada, e no dia da pesquisa tenham sido retonados 10 resultados, então este indicador deverá mostrar o número 10, mesmo que se a mesma pesquisa por 'nature' hoje retorne 15 resultados.
 
 Isto ocorre porque deve-se armazenar os resultados reais do momento da pesquisa e não apenas a tag.
+
+Ao clicar em um item da lista, é aberta uma tela mostrando todas as fotos que pertencem à aquela hashtag. Para deletar essa hashtag do seu histórico, basta clicar no botão 'Deletar' no canto superior direito da tela.
 
 ## Créditos
 Este projeto foi criado por [Renato N. Lourenço](mailto://renatonolo@hotmail.com) e pode ser realizado fork, análise e pesquisa afim de uso didático. Caso tenha alguma dúvida, sinta-se a vontade para entrar em contato.

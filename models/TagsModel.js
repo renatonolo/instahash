@@ -43,7 +43,6 @@ class TagsModel {
                             'data': jsonBody.data,
                             'pagination': jsonBody.pagination
                         };
-                        that.salvarHistorico(username, tag, jsonBody.data);
                     }
 
                     res.jsonp(json);
@@ -60,7 +59,7 @@ class TagsModel {
 
     //Salva o resultado de uma pesquisa de tag para poder
     //consultar o histórico depois...
-    salvarHistorico(username, tag, data){
+    salvarHistorico(username, tag, data, res){
         var that = this;
 
         this.Tag.findOne({username: username, tag: tag}, '', function(err, result){
@@ -71,14 +70,30 @@ class TagsModel {
                         tag: tag,
                         results: data
                     });
-                    historico.save();
+
+                    historico.save(function(err, result){
+                        let output = {
+                            status: 200,
+                            msg: "Histórico salvo com sucesso."
+                        };
+
+                        res.send(JSON.stringify(output));
+                    });
                 } else {
                     for(let i = 0; i < data.length; i++){
                         let itemToSave = data[i];
                         if(!that.isSaved(itemToSave, result.results))
                             result.results.push(itemToSave);
                     }
-                    result.save();
+
+                    result.save(function(err, result){
+                        let output = {
+                            status: 200,
+                            msg: "Histórico salvo com sucesso."
+                        };
+
+                        res.send(JSON.stringify(output));
+                    });
                 }
             }
         });
@@ -89,6 +104,24 @@ class TagsModel {
         this.Tag.find({username: username}, function(err, result){
             if(!err) res.jsonp(result);
             else res.jsonp({});
+        });
+    }
+
+    deletarTagHistorico(username, tag, res){
+        this.Tag.findOneAndRemove({username: username, tag: tag}, function(err, result){
+            let output = {
+                status: 200,
+                msg: "Tag " + tag + " deletada com sucesso."
+            };
+
+            if(err){
+                output = {
+                    status: 500,
+                    msg: 'Erro ao tentar deletar a tag ' + tag + '.'
+                };
+            }
+
+            res.send(JSON.stringify(output));
         });
     }
 

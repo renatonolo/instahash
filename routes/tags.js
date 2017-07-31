@@ -33,4 +33,21 @@ router.get("/:username/historico", function(req, res){
     tagsModel.getHistorico(username, res);
 });
 
+router.post("/:username/tag/:tag/salvarHistorico", function(req, res){
+    //Salva os items de uma pesquisa do usuário no histórico
+    let username = req.params.username;
+    let tag = req.params.tag;
+    let items = req.body;
+
+    tagsModel.salvarHistorico(username, tag, items, res);
+});
+
+router.delete("/:username/tag/:tag/deletar", function(req, res){
+    //Deleta uma tag do histórico de tags do usuário
+    let username = req.params.username;
+    let tag = req.params.tag;
+
+    tagsModel.deletarTagHistorico(username, tag, res);
+});
+
 module.exports = router;

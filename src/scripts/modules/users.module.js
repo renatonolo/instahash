@@ -46,6 +46,7 @@
         $scope.items = [];
         $scope.showCarregarMais = false;
         $scope.loading = false;
+        $scope.statusSalvarResultado = '';
 
         //Captura a tag que o usuário colocou no text e envia para o servidor
         //para fazer a pesquisa no instagram..
@@ -84,6 +85,21 @@
             }
         };
 
+        //Salva o resultado da pesquisa...
+        $scope.salvarResultado = function(){
+            $scope.statusSalvarResultado = "Salvando...";
+            let username = localStorage.getItem('username');
+
+            if(username != '' && $scope.items.length > 0){
+                UsersFactory.salvarHistorico(username, $scope.tag, $scope.items).then(function(res){
+                    if(res && res.data.status == 200)
+                        $scope.statusSalvarResultado = "Resultado salvo com sucesso...";
+                    else
+                        $scope.statusSalvarResultado = "Não foi possível salvar o resultado...";
+                });
+            }
+        };
+
         //Renderiza a galeria...
         function renderGallery(){
             $scope.loading = false;
@@ -114,7 +130,6 @@
             let username = localStorage.getItem("username");
 
             UsersFactory.getHistorico(username).then(function(tags){
-                console.log(tags);
                 $scope.historico = tags.data;
                 $scope.loading = false;
             });
@@ -124,6 +139,21 @@
         $scope.selecionarItem = function(item){
             $scope.itemSelecionado = item;
             renderGallery();
+        };
+
+        //Deleta uma tag do histórico de pesquisas...
+        $scope.deletarTagHistorico = function(){
+            if($scope.itemSelecionado != null){
+                UsersFactory.deletarTagHistorico(
+                    $scope.itemSelecionado.username,
+                    $scope.itemSelecionado.tag
+                ).then(function(res){
+                    if(res && res.data.status == 200){
+                        loadHistorico();
+                        $scope.itemSelecionado = null;
+                    }
+                });
+            }
         };
 
         //Renderiza a galeria...
