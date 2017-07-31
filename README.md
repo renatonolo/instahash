@@ -2,7 +2,6 @@
 InstaHash programa permite o usuário logar com sua conta do Instagram e pesquisar por hashtags, mostrando as hashtags recentes e armazenando todo o histórico de pesquisas do usuário.
 Este projeto foi desenvolvido usando as tecnologias NodeJS, AngularJS Framework (v1) e MongoDB.
 
----
 ## Pré-requisitos
 
  1. Git
@@ -13,7 +12,6 @@ Este projeto foi desenvolvido usando as tecnologias NodeJS, AngularJS Framework 
  6. Mocha (instalação global `npm install -g mocha`)
  7. MongoDB
 
----
 ## Configurando
 Antes de poder rodar o app e realizar os testes, é necessário configurar alguns arquivos, a qual são mencionados abaixo:
 
@@ -33,7 +31,6 @@ Antes de poder rodar o app e realizar os testes, é necessário configurar algun
 	 - `instagram->client_id`: Client_id fornecido pela API do Instagram ao desenvolvedor.
 	 - `redirect_uri`: URL de redirecionamento do callback que a API do instagram deve chamar assim que o login do usuário for validado. Este valor pode mudar de acordo com o IP e a porta do servidor usado, mantendo apenas o path do caminho (/callbackLogin).
 
----
 ###Instalando as dependências
 Para instalar as dependências do projeto, tenha previamente instalado e configurado o [NodeJS](https://nodejs.org/en/) e o [NPM](https://www.npmjs.com/).
 
@@ -43,7 +40,6 @@ Após o procedimento acima ser realizado com sucesso, devemos instalar também a
 
 Também é necessário ter instalado o servidor do [MongoDB](https://www.mongodb.com/). Este deve ser instalado no mesmo servidor ou em um servidor separado, tendo que, neste caso, configurar corretamente a uri de conexão, como explicado no tópico anterior.
 
----
 ###Realizando o build e testes
 O projeto conta com scripts automático de build (concatenação e minificação dos arquivos JS) e teste (testes de functions e requests).
 Para rodar os testes, deve-se seguir os seguintes passos:
@@ -62,7 +58,6 @@ Para rodar os testes, deve-se seguir os seguintes passos:
 
  Deve-se então analisar a saída do comando, afim de aferir se o mesmo contém erros, e então corrigi-los.
 
----
 ###Start do servidor e acesso ao index
 Nesta etapa, já é possível fazer o start do servidor, bem como acessar a página inicial do projeto.
 
@@ -70,13 +65,11 @@ Para fazer o start do servidor deve-se executar o seguinte comando: `npm run sta
 
 Caso o servidor inicie corretamente, uma mensagem será mostrada indicando a porta utilizada. Neste momento deve ser possível acessar a página index do projeto, na seguinte url: [http://localhost:8000/](http://localhost:8000/). Caso seu host ou porta sejam diferentes, deve-se corrigir acessando o link correto (http://192.168.1.5:8080/ por exemplo).
 
----
 ###Pesquisando por uma hashtag
 Após realizar o login, o usuário é enviado para a página home.
 
 Nesta página é possível realizar a pesquisa de hashtag. Para isto, basta digitar a hashtag desejada no campo '#something' (sem o caractere '#') e clicar no botão 'Pesquisar'. O resultado da pesquisa será mostrado logo abaixo do campo de busca.
 
----
 ###Recuperando o histórico de pesquisar
 Na página de histórico é possível recuperar todas as pesquisar já realizadas pelo usuário. Para acessar tal página, basta clicar na aba 'Histórico' localizada no botão no canto superior esquerdo da tela.
 
@@ -84,7 +77,6 @@ Nesta página será mostrada uma lista com todas as hashtags pesquisadas pelo us
 
 Isto ocorre porque deve-se armazenar os resultados reais do momento da pesquisa e não apenas a tag.
 
----
 ###Créditos
 Este projeto foi criado por [Renato N. Lourenço](mailto://renatonolo@hotmail.com) e pode ser realizado fork, análise e pesquisa afim de uso didático. Caso tenha alguma dúvida, sinta-se a vontade para entrar em contato.
  - Email: [renatonolo@hotmail.com](mailto://renatonolo@hotmail.com)
